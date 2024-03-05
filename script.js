@@ -150,7 +150,7 @@ var Game = {
             if (this.ball.moveX === DIRECTION.LEFT) this.ball.x -= this.ball.speed;
             else if (this.ball.moveX === DIRECTION.RIGHT) this.ball.x += this.ball.speed;
  
-            // Handle ai (AI) UP and DOWN movement
+            // Handle ai UP and DOWN movement
             if (this.ai.y > this.ball.y - (this.ai.height / 2)) {
                 if (this.ball.moveX === DIRECTION.RIGHT) this.ai.y -= this.ai.speed / 1.5;
                 else this.ai.y -= this.ai.speed / 4;
@@ -186,8 +186,7 @@ var Game = {
         // Handle the end of round transition
         // Check to see if the player won the round.
         if (this.player.score === rounds[this.round]) {
-            // Check to see if there are any more rounds/levels left and display the victory screen if
-            // there are not.
+            // Check to see if there are any more rounds/levels left
             if (!rounds[this.round + 1]) {
                 this.over = true;
                 setTimeout(function () { Pong.endGameMenu('Winner!'); }, 1000);
