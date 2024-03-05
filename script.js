@@ -26,7 +26,7 @@ var Ball = {
 };
 
 // the computer you play against
-var Comp = {
+var Ai = {
     new: function (side) {
         return {
             width: 18,
@@ -51,13 +51,13 @@ var Game = {
             this.canvas.style.width = (this.canvas.width / 2) + 'px';
             this.canvas.style.height = (this.canvas.height / 2) + 'px';
     
-            this.player = Comp.new.call(this, 'left');
-            this.comp = Comp.new.call(this, 'right');
+            this.player = Ai.new.call(this, 'left');
+            this.comp = Ai.new.call(this, 'right');
             this.ball = Ball.new.call(this);
     
             this.comp.speed = 5;
             this.running = this.over = false;
-            this.turn = this.comp;
+            this.turn = this.ai;
             this.timer = this.round = 0;
             this.color = '#8c52ff';
     
