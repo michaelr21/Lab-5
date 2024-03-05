@@ -9,3 +9,7 @@ the next level starts and the screen changes to a different color
 Why the project is useful
 Our pong game is useful because we have no ads and it is free to play! If
 anyone has freetime they can play our pong game.
+
+How users can get started with the project
+User can get started with the project by looking at our github and finding our 
+source code to make their own copy.
