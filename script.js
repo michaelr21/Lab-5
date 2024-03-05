@@ -42,80 +42,62 @@ var Comp = {
 
 var Game = {
     initiazlize: function() {
-        this.canvas = document.querySelector('canvas');
-        this.context = this.canvas.getContext('2d');
-
-        this.canvas.width = 1400;
-        this.canvas.height = 1000;
-
-        this.canvas.style.width = (this.canvas.width / 2) + 'px';
-        this.canvas.style.height = (this.canvas.height / 2) + 'px';
-
-        this.player = Comp.new.call(this, 'left');
-        this.comp = Comp.new.call(this, 'right');
-        this.ball = Ball.new.call(this);
-
-        this.comp.speed = 5;
-        this.running = this.over = false;
-        this.turn = this.comp;
-        this.timer = this.round = 0;
-        this.color = '#8c52ff';
-
-        Pong.menu();
-        Pong.listen();
-    },
-
-    endGameMenu: function(text) {
-        //this changes the games font size
-        Pong.context.font = '45px Courier New';
-        Pong.context.fillStyle = this.color;
-
-        //give the text at the bottom a background
-        Pong.context.fillRect(
-            Pong.canvas.width / 2 - 350,
-            Pong.canvas.height / 2 - 48,
-            700,
-            100
-        );
+            this.canvas = document.querySelector('canvas');
+            this.context = this.canvas.getContext('2d');
+    
+            this.canvas.width = 1400;
+            this.canvas.height = 1000;
+    
+            this.canvas.style.width = (this.canvas.width / 2) + 'px';
+            this.canvas.style.height = (this.canvas.height / 2) + 'px';
+    
+            this.player = Comp.new.call(this, 'left');
+            this.comp = Comp.new.call(this, 'right');
+            this.ball = Ball.new.call(this);
+    
+            this.comp.speed = 5;
+            this.running = this.over = false;
+            this.turn = this.comp;
+            this.timer = this.round = 0;
+            this.color = '#8c52ff';
+    
+            Pong.menu();
+            Pong.listen();
+        },
+    
+        endGameMenu: function(text) {
+            //this changes the games font size
+            Pong.context.font = '45px Courier New';
+            Pong.context.fillStyle = this.color;
+    
+            //give the text at the bottom a background
+            Pong.context.fillRect(
+                Pong.canvas.width / 2 - 350,
+                Pong.canvas.height / 2 - 48,
+                700,
+                100
+            );
+    
+            //change the board color
+            Pong.context.fillStyle = '#ffffff';
+    
+            //End game menu
+            Pong.context.fillText(text,
+                Pong.canvas.width / 2,
+                Pong.canvas.height / 2 + 15
+            );
+    
+            setTimeout(function () {
+                Pong = Object.assign({}, Game);
+                Pong.initialize();
+            },  3000);
+        },
         
-        //change the board color
-        Pong.context.fillStyle = '#ffffff';
-
-        //End game menu
-        Pong.context.fillText(text,
-            Pong.canvas.width / 2,
-            Pong.canvas.height / 2 + 15
-        );
-
-        setTimeout(function () {
-            Pong = Object.assign({}, Game);
-            Pong.initialize();
-        },  3000);
-    },
-
-    menu: function() {
+        menu: function() {
         //This draws all the pong objects in its current state
         Pong.draw()
 
         //this changes the boards font size and color
         this.context.font = '50px Courier New';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+                        
