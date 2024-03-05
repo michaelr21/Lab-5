@@ -16,7 +16,8 @@ source code to make their own copy.
 
 Where users can get help with your project
 Users can get help with our project by reaching out to Karla or Michael and we will
-try our best to help resolve their issue.
+try our best to help resolve their issue. If Karla or Michael are not reachable, users
+can also check YouTube because there are numerous tutorial videos.
 
 Who maintains and contributes to the project
 Karla and Michael both maintain and contribute to the project, making regular updates to
