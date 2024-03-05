@@ -22,3 +22,5 @@ can also check YouTube because there are numerous tutorial videos.
 Who maintains and contributes to the project
 Karla and Michael both maintain and contribute to the project, making regular updates to
 the game and resolving any bug issues that may occur.
+
+To play our game visit: cs.csub.edu/~mraya/3350/lab05
