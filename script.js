@@ -92,4 +92,12 @@ var Game = {
                 Pong.initialize();
             },  3000);
         },
+        
+        menu: function() {
+        //This draws all the pong objects in its current state
+        Pong.draw()
+
+        //this changes the boards font size and color
+        this.context.font = '50px Courier New';
+  
                         
