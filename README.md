@@ -13,3 +13,7 @@ anyone has freetime they can play our pong game.
 How users can get started with the project
 User can get started with the project by looking at our github and finding our 
 source code to make their own copy.
+
+Where users can get help with your project
+Users can get help with our project by reaching out to Karla or Michael and we will
+try our best to help resolve their issue.
