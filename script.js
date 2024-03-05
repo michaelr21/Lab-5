@@ -10,7 +10,7 @@ var DIRECTION = {
 var rounds = [5, 5, 3, 3, 2];
 var colors = ['#1abc9c', '#2ecc71', '#3498db', '#8c52ff', '#9b59b6'];
  
-// The ball object (The cube that bounces back and forth)
+// The ball 
 var Ball = {
     new: function (incrementedSpeed) {
         return {
@@ -25,7 +25,7 @@ var Ball = {
     }
 };
  
-// The ai object (The two lines that move up and down)
+// The Ai
 var Ai = {
     new: function (side) {
         return {
@@ -94,7 +94,7 @@ var Game = {
     },
  
     menu: function () {
-        // Draw all the Pong objects in their current state
+        
         Pong.draw();
  
         // Change the canvas font size and color
@@ -119,21 +119,20 @@ var Game = {
         );
     },
  
-    // Update all objects (move the player, ai, ball, increment the score, etc.)
+    // Update all objects on board
     update: function () {
         if (!this.over) {
-            // If the ball collides with the bound limits - correct the x and y coords.
+            // Checks to see if the ball collides with the boundary
             if (this.ball.x <= 0) Pong._resetTurn.call(this, this.ai, this.player);
             if (this.ball.x >= this.canvas.width - this.ball.width) Pong._resetTurn.call(this, this.player, this.ai);
             if (this.ball.y <= 0) this.ball.moveY = DIRECTION.DOWN;
             if (this.ball.y >= this.canvas.height - this.ball.height) this.ball.moveY = DIRECTION.UP;
  
-            // Move player if they player.move value was updated by a keyboard event
+            // Move player value if it was updated by a keyboard event
             if (this.player.move === DIRECTION.UP) this.player.y -= this.player.speed;
             else if (this.player.move === DIRECTION.DOWN) this.player.y += this.player.speed;
  
-            // On new serve (start of each turn) move the ball to the correct side
-            // and randomize the direction to add some challenge.
+            // For new serve randomize direction
             if (Pong._turnDelayIsOver.call(this) && this.turn) {
                 this.ball.moveX = this.turn === this.player ? DIRECTION.LEFT : DIRECTION.RIGHT;
                 this.ball.moveY = [DIRECTION.UP, DIRECTION.DOWN][Math.round(Math.random())];
@@ -141,7 +140,7 @@ var Game = {
                 this.turn = null;
             }
  
-            // If the player collides with the bound limits, update the x and y coords.
+            // If the player collides with the boundary
             if (this.player.y <= 0) this.player.y = 0;
             else if (this.player.y >= (this.canvas.height - this.player.height)) this.player.y = (this.canvas.height - this.player.height);
  
@@ -260,7 +259,7 @@ var Game = {
             );
         }
  
-        // Draw the net (Line in the middle)
+        // Draw the net 
         this.context.beginPath();
         this.context.setLineDash([7, 15]);
         this.context.moveTo((this.canvas.width / 2), this.canvas.height - 140);
@@ -273,14 +272,14 @@ var Game = {
         this.context.font = '100px Courier New';
         this.context.textAlign = 'center';
  
-        // Draw the players score (left)
+        // Draw the players score
         this.context.fillText(
             this.player.score.toString(),
             (this.canvas.width / 2) - 300,
             200
         );
  
-        // Draw the paddles score (right)
+        // Draw the Ai's score
         this.context.fillText(
             this.ai.score.toString(),
             (this.canvas.width / 2) + 300,
@@ -290,7 +289,7 @@ var Game = {
         // Change the font size for the center score text
         this.context.font = '30px Courier New';
  
-        // Draw the winning score (center)
+        // Draw the winning score in the center
         this.context.fillText(
             'Round ' + (Pong.round + 1),
             (this.canvas.width / 2),
@@ -312,30 +311,30 @@ var Game = {
         Pong.update();
         Pong.draw();
  
-        // If the game is not over, draw the next frame.
+        // If the game is not over keep drawing
         if (!Pong.over) requestAnimationFrame(Pong.loop);
     },
  
     listen: function () {
         document.addEventListener('keydown', function (key) {
-            // Handle the 'Press any key to begin' function and start the game.
+            //Press any key to start function
             if (Pong.running === false) {
                 Pong.running = true;
                 window.requestAnimationFrame(Pong.loop);
             }
  
-            // Handle up arrow and w key events
+            // Press the up arrow or W to move up
             if (key.keyCode === 38 || key.keyCode === 87) Pong.player.move = DIRECTION.UP;
  
-            // Handle down arrow and s key events
+            // Press the down arrow or S to move down
             if (key.keyCode === 40 || key.keyCode === 83) Pong.player.move = DIRECTION.DOWN;
         });
  
-        // Stop the player from moving when there are no keys being pressed.
+        // Stops the player from moving when there are no keys being pressed.
         document.addEventListener('keyup', function (key) { Pong.player.move = DIRECTION.IDLE; });
     },
  
-    // Reset the ball location, the player turns and set a delay before the next round begins.
+    // Reset the ball location
     _resetTurn: function(victor, loser) {
         this.ball = Ball.new.call(this, this.ball.speed);
         this.turn = loser;
